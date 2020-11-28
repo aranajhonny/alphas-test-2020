@@ -95,57 +95,6 @@ search-select {
   padding: 20px;
   width: 15%;
 }
-@media only screen and (max-width: 600px) {
-  .borders,
-  .product-single {
-    margin-left: 10% !important;
-  }
-  .product-image img {
-    width: 90%;
-  }
-  .product-desc {
-    margin: 0% !important;
-     padding: 0% !important;
-  }
-  .product-country-name {
-     margin: 0% !important;
-     padding-left: 8% !important;
-  }
-  .container {
-    padding-left: 0% !important;
-  }
-  .flags-columns {
-    width: 100% !important;
-  }
-  .search-form {
-    padding: 20px;
-    width: 90%;
-  }
-  .search-select {
-    padding: 20px;
-    width: 90%;
-  }
-  .search-bar {
-    justify-content: none;
-    flex-direction: column;
-  }
-  .product-single,
-  .product-desc-container {
-    flex-direction: column;
-  }
-  .product-image {
-    flex: 50% !important;
-  }
-  .product-desc {
-    flex: 50% !important;
-  }
-  .product-desc-container-l {
-    flex: 50% !important;
-  }
-  .product-desc-container-r {
-    flex: 50% !important;
-  }
-}
 .container {
   display: flex;
   flex-wrap: wrap;
@@ -236,4 +185,55 @@ search-select {
   margin: 5px;
   border: 1px solid var(--border);
   padding: 1%;
+}
+@media only screen and (max-width: 600px) {
+  .borders,
+  .product-single {
+    margin-left: 10% !important;
+  }
+  .product-image img {
+    width: 90%;
+  }
+  .product-desc {
+    margin: 0% !important;
+     padding: 0% !important;
+  }
+  .product-country-name {
+     margin: 0% !important;
+     padding-left: 8% !important;
+  }
+  .container {
+    padding-left: 0% !important;
+  }
+  .flags-columns {
+    width: 100% !important;
+  }
+  .search-form {
+    padding: 20px;
+    width: 90%;
+  }
+  .search-select {
+    padding: 20px;
+    width: 90%;
+  }
+  .search-bar {
+    justify-content: none;
+    flex-direction: column;
+  }
+  .product-single,
+  .product-desc-container {
+    flex-direction: column;
+  }
+  .product-image {
+    flex: 50% !important;
+  }
+  .product-desc {
+    flex: 50% !important;
+  }
+  .product-desc-container-l {
+    flex: 50% !important;
+  }
+  .product-desc-container-r {
+    flex: 50% !important;
+  }
 }
