@@ -1,0 +1,77 @@
+{
+  "config": {},
+  "lockSchema": true,
+  "dependencies": {
+    "sys_http": "sys-http:"
+  },
+  "schema": {
+    "types": [
+      {
+        "name": "Root",
+        "description": "Use this program to make HTTP requests",
+        "fields": [
+          {
+            "name": "get",
+            "description": "A resource obtained via a GET request",
+            "type": "Resource",
+            "params": [
+              { "name": "url", "type": "String" },
+              { "name": "headers", "type": "String" }
+            ]
+          }
+        ],
+        "actions": [
+          {
+            "name": "post",
+            "description": "Performs a POST request",
+            "type": "Resource",
+            "params": [
+              { "name": "url", "type": "String" },
+              { "name": "headers", "type": "String" },
+              { "name": "body", "type": "String" }
+            ]
+          },
+          {
+            "name": "put",
+            "description": "Performs a PUT request",
+            "type": "Resource",
+            "params": [
+              { "name": "url", "type": "String" },
+              { "name": "headers", "type": "String" },
+              { "name": "body", "type": "String" }
+            ]
+          },
+          {
+            "name": "patch",
+            "description": "Performs a PATCH request",
+            "type": "Resource",
+            "params": [
+              { "name": "url", "type": "String" },
+              { "name": "headers", "type": "String" },
+              { "name": "body", "type": "String" }
+            ]
+          },
+          {
+            "name": "delete",
+            "description": "Performs a DELETE request",
+            "type": "Resource",
+            "params": [
+              { "name": "url", "type": "String" },
+              { "name": "headers", "type": "String" },
+              { "name": "body", "type": "String" }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Resource",
+        "description": "An HTTP response",
+        "fields": [
+          { "name": "status", "description": "HTTP status code", "type": "Int", "params": [] },
+          { "name": "headers", "description": "HTTP headers returned by server", "type": "String", "params": [] },
+          { "name": "body", "description": "Body of the request as a string", "type": "String", "params": [] }
+        ]
+      }
+    ]
+  }
+}
