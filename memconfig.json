@@ -1,0 +1,88 @@
+{
+  "dependencies": {
+    "sys_user": "sys-user:"
+  },
+  "lockSchema": true,
+  "schema": {
+    "types": [
+      {
+        "name": "Root",
+        "description": "",
+        "actions": [
+          {
+            "name": "configure",
+            "description": "Configure your phone number to receive text messages. This action must be invoked before trying to send messages.",
+            "type": "Void",
+            "params": [
+              {
+                "name": "number",
+                "type": "String"
+              }
+            ],
+            "hints": {}
+          },
+          {
+            "name": "send",
+            "description": "Sends an SMS to the configured phone number",
+            "type": "Void",
+            "params": [
+              {
+                "name": "message",
+                "type": "String"
+              }
+            ],
+            "hints": {}
+          },
+          {
+            "name": "handleSms",
+            "description": "Tells the user program that an sms was received. You don't normally have to use this.",
+            "type": "Void",
+            "params": [
+              {
+                "name": "message",
+                "type": "String"
+              }
+            ],
+            "hints": {
+              "hidden": true
+            }
+          }
+        ],
+        "fields": [],
+        "events": [
+          {
+            "name": "received",
+            "description": "",
+            "type": "ReceivedEvent",
+            "params": [],
+            "hints": {}
+          }
+        ]
+      },
+      {
+        "name": "ReceivedEvent",
+        "description": "",
+        "actions": [],
+        "fields": [
+          {
+            "name": "message",
+            "description": "",
+            "type": "String",
+            "params": [],
+            "hints": {}
+          },
+          {
+            "name": "gref",
+            "description": "A reference to this node",
+            "type": "Ref",
+            "ofType": "ReceivedEvent",
+            "params": [],
+            "hints": {}
+          }
+        ],
+        "events": []
+      }
+    ]
+  }
+}
+

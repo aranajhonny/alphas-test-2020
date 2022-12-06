@@ -1,0 +1,253 @@
+{
+  "types": {
+    "clock": {
+      "gref_hash": "da9d1c247b69702ed49d157f0d697d132f917d00f407438e43c7e438c837c024",
+      "type": "sys-clock:Root"
+    },
+    "sys_user": {
+      "gref_hash": "1f440d735be3f34daaade76655a85718d0ebd73244576326a3fbbd9a85ec6f5e",
+      "type": "sys-user:Root"
+    },
+    "process": {
+      "gref_hash": "c7a6cc4739f2a6aa697342cf67d4924b8be757dbc2bd9eae395bc939f10d54ea",
+      "type": "sys-process:Root"
+    }
+  },
+  "imports": [
+    {
+      "name": "sys-process",
+      "schema": {
+        "types": [
+          {
+            "name": "Root",
+            "description": "",
+            "actions": [],
+            "fields": [
+              {
+                "name": "endpointUrl",
+                "description": "Gets the program's own endpoint URL",
+                "type": "String",
+                "params": [],
+                "hints": {}
+              }
+            ],
+            "events": []
+          }
+        ],
+        "imports": []
+      },
+      "source": {
+        "Program": "tbd"
+      }
+    },
+    {
+      "name": "sys-clock",
+      "schema": {
+        "types": [
+          {
+            "name": "Root",
+            "description": "",
+            "actions": [
+              {
+                "name": "sleep",
+                "description": "",
+                "type": "Void",
+                "params": [
+                  {
+                    "name": "key",
+                    "type": "String"
+                  },
+                  {
+                    "name": "seconds",
+                    "type": "Float"
+                  }
+                ],
+                "hints": {}
+              }
+            ],
+            "fields": [],
+            "events": [
+              {
+                "name": "timer",
+                "description": "",
+                "type": "TimerEvent",
+                "params": [
+                  {
+                    "name": "key",
+                    "type": "String"
+                  },
+                  {
+                    "name": "spec",
+                    "type": "String"
+                  },
+                  {
+                    "name": "maxCount",
+                    "type": "Int"
+                  }
+                ],
+                "hints": {}
+              },
+              {
+                "name": "timerAt",
+                "description": "",
+                "type": "TimerEvent",
+                "params": [
+                  {
+                    "name": "key",
+                    "type": "String"
+                  },
+                  {
+                    "name": "seconds",
+                    "type": "String"
+                  }
+                ],
+                "hints": {}
+              }
+            ]
+          },
+          {
+            "name": "TimerEvent",
+            "description": "",
+            "actions": [],
+            "fields": [
+              {
+                "name": "id",
+                "description": "",
+                "type": "String",
+                "params": [],
+                "hints": {}
+              }
+            ],
+            "events": []
+          }
+        ],
+        "imports": []
+      },
+      "source": {
+        "Program": "tbd"
+      }
+    },
+    {
+      "name": "sys-user",
+      "schema": {
+        "types": [
+          {
+            "name": "Root",
+            "description": "",
+            "actions": [
+              {
+                "name": "configureSms",
+                "description": "",
+                "type": "Void",
+                "params": [
+                  {
+                    "name": "number",
+                    "type": "String"
+                  }
+                ],
+                "hints": {}
+              },
+              {
+                "name": "configureEmail",
+                "description": "",
+                "type": "Void",
+                "params": [
+                  {
+                    "name": "number",
+                    "type": "String"
+                  }
+                ],
+                "hints": {}
+              }
+            ],
+            "fields": [
+              {
+                "name": "sms",
+                "description": "",
+                "type": "SmsChannel",
+                "params": [],
+                "hints": {}
+              },
+              {
+                "name": "email",
+                "description": "",
+                "type": "EmailChannel",
+                "params": [],
+                "hints": {}
+              }
+            ],
+            "events": []
+          },
+          {
+            "name": "SmsChannel",
+            "description": "",
+            "actions": [
+              {
+                "name": "tell",
+                "description": "",
+                "type": "Void",
+                "params": [
+                  {
+                    "name": "message",
+                    "type": "String"
+                  }
+                ],
+                "hints": {}
+              },
+              {
+                "name": "ask",
+                "description": "",
+                "type": "String",
+                "params": [
+                  {
+                    "name": "question",
+                    "type": "String"
+                  }
+                ],
+                "hints": {}
+              }
+            ],
+            "fields": [],
+            "events": []
+          },
+          {
+            "name": "EmailChannel",
+            "description": "",
+            "actions": [
+              {
+                "name": "tell",
+                "description": "",
+                "type": "Void",
+                "params": [
+                  {
+                    "name": "message",
+                    "type": "String"
+                  }
+                ],
+                "hints": {}
+              },
+              {
+                "name": "ask",
+                "description": "",
+                "type": "String",
+                "params": [
+                  {
+                    "name": "question",
+                    "type": "String"
+                  }
+                ],
+                "hints": {}
+              }
+            ],
+            "fields": [],
+            "events": []
+          }
+        ],
+        "imports": []
+      },
+      "source": {
+        "Program": "tbd"
+      }
+    }
+  ]
+}
