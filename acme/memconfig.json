@@ -1,0 +1,15 @@
+{
+  "schema": {
+    "types": [
+      {
+        "name": "Root",
+        "actions": [
+          {
+            "name": "setup",
+            "type": "Void"
+          }
+        ]
+      }
+    ]
+  }
+}
