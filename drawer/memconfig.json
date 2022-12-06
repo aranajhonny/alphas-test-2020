@@ -1,0 +1,102 @@
+{
+  "dependencies": {},
+  "lockSchema": true,
+  "schema": {
+    "types": [
+      {
+        "name": "Root",
+        "description": "Store nodes for future use",
+        "actions": [
+          {
+            "name": "put",
+            "description": "Puts the provided node in your drawer, optionally giving it a name",
+            "type": "String",
+            "params": [
+              {
+                "name": "name",
+                "type": "String"
+              },
+              {
+                "name": "node",
+                "type": "Ref",
+                "ofType": "Void"
+              }
+          ],
+            "hints": {} 
+          },
+          {
+            "name": "remove",
+            "description": "Removes a stored node by name",
+            "type": "Void",
+            "params": [
+              {
+                "name": "name",
+                "type": "String"
+              }
+            ]
+          }
+        ],
+        "fields": [
+          {
+            "name": "one",
+            "description": "The collection of stored nodes",
+            "type": "Ref",
+            "ofType": "String",
+            "params": [
+              {
+                "name": "name",
+                "type": "String"
+              }
+            ],
+            "hints": {}
+          },
+          {
+            "name": "page",
+            "description": "A page of stored nodes",
+            "type": "NodePage",
+            "hints": {}
+          }
+        ],
+        "events": []
+      },
+      {
+        "name": "NodePage",
+        "fields": [
+          {
+            "name": "items",
+            "type": "List",
+            "ofType": "Item"
+          },
+          {
+            "name": "next",
+            "type": "Ref",
+            "ofType": "NodePage"
+          }
+        ]
+      },
+      {
+        "name": "Item",
+        "fields": [
+          {
+            "name": "gref",
+            "type": "Ref",
+            "ofType": "Item"
+          },
+          {
+            "name": "name",
+            "type": "String",
+            "hints": { "primary": true } 
+          },
+          {
+            "name": "node",
+            "type": "Ref",
+            "ofType": "String",
+            "hints": { "primary": true } 
+          }
+        ]
+
+      }
+    ]
+  }
+}
+
