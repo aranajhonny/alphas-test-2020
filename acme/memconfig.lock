@@ -1,0 +1,551 @@
+{
+  "types": {
+    "clock": {
+      "gref_hash": "da9d1c247b69702ed49d157f0d697d132f917d00f407438e43c7e438c837c024",
+      "type": "sys-clock:Root"
+    },
+    "process": {
+      "gref_hash": "c7a6cc4739f2a6aa697342cf67d4924b8be757dbc2bd9eae395bc939f10d54ea",
+      "type": "sys-process:Root"
+    },
+    "http": {
+      "gref_hash": "5cfa57fe83d1201eb831cc168a5dbe9decaa6010603df244ca6855f2fe61440c",
+      "type": "http:Root"
+    }
+  },
+  "imports": [
+    {
+      "name": "sys-clock",
+      "schema": {
+        "types": [
+          {
+            "name": "Root",
+            "description": "",
+            "actions": [
+              {
+                "name": "sleep",
+                "description": "",
+                "type": "Void",
+                "params": [
+                  {
+                    "name": "key",
+                    "type": "String"
+                  },
+                  {
+                    "name": "seconds",
+                    "type": "Float"
+                  }
+                ],
+                "hints": {}
+              }
+            ],
+            "fields": [],
+            "events": [
+              {
+                "name": "timer",
+                "description": "",
+                "type": "TimerEvent",
+                "params": [
+                  {
+                    "name": "key",
+                    "type": "String"
+                  },
+                  {
+                    "name": "spec",
+                    "type": "String"
+                  },
+                  {
+                    "name": "maxCount",
+                    "type": "Int"
+                  }
+                ],
+                "hints": {}
+              },
+              {
+                "name": "timerAt",
+                "description": "",
+                "type": "TimerEvent",
+                "params": [
+                  {
+                    "name": "key",
+                    "type": "String"
+                  },
+                  {
+                    "name": "seconds",
+                    "type": "String"
+                  }
+                ],
+                "hints": {}
+              }
+            ]
+          },
+          {
+            "name": "TimerEvent",
+            "description": "",
+            "actions": [],
+            "fields": [
+              {
+                "name": "id",
+                "description": "",
+                "type": "String",
+                "params": [],
+                "hints": {}
+              }
+            ],
+            "events": []
+          }
+        ],
+        "imports": []
+      },
+      "source": {
+        "Program": "tbd"
+      }
+    },
+    {
+      "name": "sys-process",
+      "schema": {
+        "types": [
+          {
+            "name": "Root",
+            "description": "",
+            "actions": [],
+            "fields": [
+              {
+                "name": "endpointUrl",
+                "description": "Gets the program's own endpoint URL",
+                "type": "String",
+                "params": [],
+                "hints": {}
+              }
+            ],
+            "events": []
+          }
+        ],
+        "imports": []
+      },
+      "source": {
+        "Program": "tbd"
+      }
+    },
+    {
+      "name": "http",
+      "schema": {
+        "types": [
+          {
+            "name": "Root",
+            "description": "Use this program to make HTTP requests",
+            "actions": [
+              {
+                "name": "post",
+                "description": "Performs a POST request",
+                "type": "Resource",
+                "params": [
+                  {
+                    "name": "url",
+                    "type": "String"
+                  },
+                  {
+                    "name": "headers",
+                    "type": "String"
+                  },
+                  {
+                    "name": "body",
+                    "type": "String"
+                  }
+                ],
+                "hints": {}
+              },
+              {
+                "name": "put",
+                "description": "Performs a PUT request",
+                "type": "Resource",
+                "params": [
+                  {
+                    "name": "url",
+                    "type": "String"
+                  },
+                  {
+                    "name": "headers",
+                    "type": "String"
+                  },
+                  {
+                    "name": "body",
+                    "type": "String"
+                  }
+                ],
+                "hints": {}
+              },
+              {
+                "name": "patch",
+                "description": "Performs a PATCH request",
+                "type": "Resource",
+                "params": [
+                  {
+                    "name": "url",
+                    "type": "String"
+                  },
+                  {
+                    "name": "headers",
+                    "type": "String"
+                  },
+                  {
+                    "name": "body",
+                    "type": "String"
+                  }
+                ],
+                "hints": {}
+              },
+              {
+                "name": "delete",
+                "description": "Performs a DELETE request",
+                "type": "Resource",
+                "params": [
+                  {
+                    "name": "url",
+                    "type": "String"
+                  },
+                  {
+                    "name": "headers",
+                    "type": "String"
+                  },
+                  {
+                    "name": "body",
+                    "type": "String"
+                  }
+                ],
+                "hints": {}
+              }
+            ],
+            "fields": [
+              {
+                "name": "get",
+                "description": "A resource obtained via a GET request",
+                "type": "Resource",
+                "params": [
+                  {
+                    "name": "url",
+                    "type": "String"
+                  },
+                  {
+                    "name": "headers",
+                    "type": "String"
+                  }
+                ],
+                "hints": {}
+              },
+              {
+                "name": "gref",
+                "description": "A reference to this node",
+                "type": "Ref",
+                "ofType": "Root",
+                "params": [],
+                "hints": {}
+              }
+            ],
+            "events": []
+          },
+          {
+            "name": "Resource",
+            "description": "An HTTP response",
+            "actions": [],
+            "fields": [
+              {
+                "name": "status",
+                "description": "HTTP status code",
+                "type": "Int",
+                "params": [],
+                "hints": {}
+              },
+              {
+                "name": "headers",
+                "description": "HTTP headers returned by server",
+                "type": "String",
+                "params": [],
+                "hints": {}
+              },
+              {
+                "name": "body",
+                "description": "Body of the request as a string",
+                "type": "String",
+                "params": [],
+                "hints": {}
+              },
+              {
+                "name": "gref",
+                "description": "A reference to this node",
+                "type": "Ref",
+                "ofType": "Resource",
+                "params": [],
+                "hints": {}
+              }
+            ],
+            "events": []
+          }
+        ],
+        "imports": [
+          {
+            "name": "sys-http",
+            "schema": {
+              "types": [
+                {
+                  "name": "Root",
+                  "description": "",
+                  "actions": [
+                    {
+                      "name": "post",
+                      "description": "",
+                      "type": "Resource",
+                      "params": [
+                        {
+                          "name": "url",
+                          "type": "String"
+                        },
+                        {
+                          "name": "headers",
+                          "type": "String"
+                        },
+                        {
+                          "name": "body",
+                          "type": "String"
+                        }
+                      ],
+                      "hints": {}
+                    },
+                    {
+                      "name": "put",
+                      "description": "",
+                      "type": "Resource",
+                      "params": [
+                        {
+                          "name": "url",
+                          "type": "String"
+                        },
+                        {
+                          "name": "headers",
+                          "type": "String"
+                        },
+                        {
+                          "name": "body",
+                          "type": "String"
+                        }
+                      ],
+                      "hints": {}
+                    },
+                    {
+                      "name": "patch",
+                      "description": "",
+                      "type": "Resource",
+                      "params": [
+                        {
+                          "name": "url",
+                          "type": "String"
+                        },
+                        {
+                          "name": "headers",
+                          "type": "String"
+                        },
+                        {
+                          "name": "body",
+                          "type": "String"
+                        }
+                      ],
+                      "hints": {}
+                    },
+                    {
+                      "name": "delete",
+                      "description": "",
+                      "type": "Resource",
+                      "params": [
+                        {
+                          "name": "url",
+                          "type": "String"
+                        },
+                        {
+                          "name": "headers",
+                          "type": "String"
+                        },
+                        {
+                          "name": "body",
+                          "type": "String"
+                        }
+                      ],
+                      "hints": {}
+                    }
+                  ],
+                  "fields": [
+                    {
+                      "name": "get",
+                      "description": "",
+                      "type": "Resource",
+                      "params": [
+                        {
+                          "name": "url",
+                          "type": "String"
+                        },
+                        {
+                          "name": "headers",
+                          "type": "String"
+                        }
+                      ],
+                      "hints": {}
+                    }
+                  ],
+                  "events": []
+                },
+                {
+                  "name": "Resource",
+                  "description": "",
+                  "actions": [],
+                  "fields": [
+                    {
+                      "name": "status",
+                      "description": "",
+                      "type": "Int",
+                      "params": [],
+                      "hints": {}
+                    },
+                    {
+                      "name": "headers",
+                      "description": "",
+                      "type": "String",
+                      "params": [],
+                      "hints": {}
+                    },
+                    {
+                      "name": "body",
+                      "description": "",
+                      "type": "String",
+                      "params": [],
+                      "hints": {}
+                    }
+                  ],
+                  "events": []
+                }
+              ],
+              "imports": []
+            },
+            "source": {
+              "Program": "tbd"
+            }
+          },
+          {
+            "name": "sys-clock",
+            "schema": {
+              "types": [
+                {
+                  "name": "Root",
+                  "description": "",
+                  "actions": [
+                    {
+                      "name": "sleep",
+                      "description": "",
+                      "type": "Void",
+                      "params": [
+                        {
+                          "name": "key",
+                          "type": "String"
+                        },
+                        {
+                          "name": "seconds",
+                          "type": "Float"
+                        }
+                      ],
+                      "hints": {}
+                    }
+                  ],
+                  "fields": [],
+                  "events": [
+                    {
+                      "name": "timer",
+                      "description": "",
+                      "type": "TimerEvent",
+                      "params": [
+                        {
+                          "name": "key",
+                          "type": "String"
+                        },
+                        {
+                          "name": "spec",
+                          "type": "String"
+                        },
+                        {
+                          "name": "maxCount",
+                          "type": "Int"
+                        }
+                      ],
+                      "hints": {}
+                    },
+                    {
+                      "name": "timerAt",
+                      "description": "",
+                      "type": "TimerEvent",
+                      "params": [
+                        {
+                          "name": "key",
+                          "type": "String"
+                        },
+                        {
+                          "name": "seconds",
+                          "type": "String"
+                        }
+                      ],
+                      "hints": {}
+                    }
+                  ]
+                },
+                {
+                  "name": "TimerEvent",
+                  "description": "",
+                  "actions": [],
+                  "fields": [
+                    {
+                      "name": "id",
+                      "description": "",
+                      "type": "String",
+                      "params": [],
+                      "hints": {}
+                    }
+                  ],
+                  "events": []
+                }
+              ],
+              "imports": []
+            },
+            "source": {
+              "Program": "tbd"
+            }
+          },
+          {
+            "name": "sys-process",
+            "schema": {
+              "types": [
+                {
+                  "name": "Root",
+                  "description": "",
+                  "actions": [],
+                  "fields": [
+                    {
+                      "name": "endpointUrl",
+                      "description": "Gets the program's own endpoint URL",
+                      "type": "String",
+                      "params": [],
+                      "hints": {}
+                    }
+                  ],
+                  "events": []
+                }
+              ],
+              "imports": []
+            },
+            "source": {
+              "Program": "tbd"
+            }
+          }
+        ]
+      },
+      "source": {
+        "Program": "tbd"
+      }
+    }
+  ]
+}

@@ -5,11 +5,90 @@
         "name": "Root",
         "actions": [
           {
-            "name": "setup",
-            "type": "Void"
+            "name": "getTask",
+            "description": "Get Task",
+            "type": "Void",
+            "params": [{ "name": "id", "type": "Int" }]
+          },
+          {
+            "name": "getAllTask",
+            "description": "Get All Task",
+            "type": "Void",
+            "params": []
+          },
+          {
+            "name": "addTask",
+            "description": "Create Task",
+            "type": "Void",
+            "params": [
+              { 
+                "name": "id", 
+                "type": "Int" 
+              },
+              {
+                "name": "todo",
+                "type": "String"
+              },
+              { 
+                "name": "priority", 
+                "type": "String" 
+              },
+              { 
+                "name": "status", 
+                "type": "String" 
+              },
+              { 
+                "name": "category", 
+                "type": "String" 
+              },
+              { 
+                "name": "dueDate", 
+                "type": "String" 
+              }
+            ]
+          },
+          {
+            "name": "editTask",
+            "description": "Update Task",
+            "type": "Void",
+            "params": [
+              { 
+                "name": "id", 
+                "type": "Int" 
+              },
+              {
+                "name": "todo",
+                "type": "String"
+              },
+              { 
+                "name": "priority", 
+                "type": "String" 
+              },
+              { 
+                "name": "status", 
+                "type": "String" 
+              },
+              { 
+                "name": "category", 
+                "type": "String" 
+              },
+              { 
+                "name": "dueDate", 
+                "type": "String" 
+              }
+            ]
+          },
+          {
+            "name": "deleteTask",
+            "description": "Remove Task",
+            "type": "Void",
+            "params": [{ "name": "id", "type": "Int" }]
           }
         ]
       }
     ]
+  },
+  "dependencies": {
+    "http": "http:"
   }
 }
