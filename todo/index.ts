@@ -30,7 +30,6 @@ export const Root = {
     delete state.tasks[index];
   },
 };
-
 // interface Task {
 //   id: number,
 //   title: string,
