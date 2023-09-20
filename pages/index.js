@@ -13,14 +13,14 @@ function Countries() {
   const [searchTerm, setSearchTerm] = useState("");
 
   useEffect(() => {
-    fetch("https://restcountries.eu/rest/v2/all")
+    fetch("https://restcountries.com/v3.1/all")
       .then((res) => res.json())
       .then((data) => setCountries(data));
   }, []);
 
   useEffect(() => {
     if (selectedOption) {
-      fetch(`https://restcountries.eu/rest/v2/region/${selectedOption.value}`)
+      fetch(`https://restcountries.com/v3.1/region/${selectedOption.value}`)
         .then((res) => res.json())
         .then((data) => setCountries(data));
     }
