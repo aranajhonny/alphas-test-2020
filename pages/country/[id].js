@@ -15,18 +15,20 @@ const Component = () => {
   const { id } = router.query;
   // TODO: refactor
   useEffect(() => {
-    fetch(`https://restcountries.eu/rest/v2/alpha/${id}`)
-      .then((res) => res.json())
-      .then((data) => setCountry(data));
+    if (id) {
+      fetch(`https://restcountries.com/v3.1/alpha/${id}`)
+        .then((res) => res.json())
+        .then((data) => setCountry(data[0]));
+    }
   }, [id]);
   // to resolve borders
   useEffect(() => {
-    fetch("https://restcountries.eu/rest/v2/all")
+    fetch("https://restcountries.com/v3.1/all")
       .then((res) => res.json())
       .then((data) => setCountries(data));
   }, []);
   function getBorder(code) {
-    const border = countries && countries.find((x) => x.alpha3Code == code);
+    const border = countries && countries.find((x) => x.cca3 == code);
     return border && border;
   }
   return (
@@ -43,14 +45,14 @@ const Component = () => {
           </div>
           <div className="product-single">
             <div className="product-image">
-              <img src={country.flag} alt="flag" />
+              <img src={country.flags.svg} alt="flag" />
             </div>
 
             <div className="product-desc">
-              <h1 className="product-country-name">{country.name}</h1>
+              <h1 className="product-country-name">{country.name.official}</h1>
               <div className="product-desc-container">
                 <div className="product-desc-container-l">
-                  <span>Native name: {country.nativeName}</span>
+                  <span>Native name: {country.name.common}</span>
                   <br />
                   <span>Population: {country.population}</span>
                   <br />
@@ -58,46 +60,63 @@ const Component = () => {
                   <br />
                   <span>Sub Region: {country.subregion}</span>
                   <br />
-                  <span>Capital: {country.capital}</span>
+                  <span>Capital: {country.capital[0]}</span>
                   <br />
                 </div>
                 <div className="product-desc-container-r">
-                  <span>Top Level Domain: {country.topLevelDomain}</span>
+                  <span>Top Level Domain: {country.tld}</span>
                   <br />
-                  <span>
-                    Currencies:
-                    {country.currencies &&
-                      country.currencies.map(
-                        (money, index) => " " + money.code
+                  <div>
+                    <span>
+                      Currencies:
+                      {country?.currencies && (
+                        <span>
+                          {Object.keys(country.currencies).map(
+                            (currencyCode, index) => (
+                              <span key={index}> {currencyCode}</span>
+                            )
+                          )}
+                        </span>
                       )}
-                  </span>
-                  <br />
-                  <span>
-                    languages:
-                    {country.languages &&
-                      country.languages.map(
-                        (money, index) => " " + money.name + " "
+                    </span>
+                    <br />
+                    <span>
+                      Languages:
+                      {country?.languages && (
+                        <span>
+                          {Object.values(country.languages).map(
+                            (language, index) => (
+                              <span key={index}> {language} </span>
+                            )
+                          )}
+                        </span>
                       )}
-                  </span>
+                    </span>
+                  </div>
                   <br />
                 </div>
               </div>
               <div className="borders">
                 Borders Countries: <br />
-                {country.borders.length > 1 &&
-                  country.borders.map((code, index) => (
-                    <Link
-                      key={index}
-                      href="/country/[id]"
-                      as={`/country/${
-                        getBorder(code) && getBorder(code).alpha3Code
-                      }`}
-                    >
-                      <span key={index} className="border-button">
-                        {getBorder(code) && getBorder(code).name}
-                      </span>
-                    </Link>
-                  ))}
+                {country.borders.map((code, index) => {
+                  const borderCountry = getBorder(code);
+
+                  if (borderCountry) {
+                    return (
+                      <Link
+                        key={index}
+                        href="/country/[id]"
+                        as={`/country/${borderCountry.cca3}`}
+                      >
+                        <span key={index} className="border-button">
+                          {borderCountry.name.common}
+                        </span>
+                      </Link>
+                    );
+                  }
+
+                  return null; // Return null for invalid country codes
+                })}
               </div>
             </div>
           </div>

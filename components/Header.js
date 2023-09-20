@@ -1,6 +1,5 @@
 import Switch from "react-switch";
 import React, { useState, useEffect } from "react";
-import { useMediaQuery } from "react-responsive";
 const DARK_CLASS = "dark";
 import { useTheme } from "../lib/useTheme";
 function Header () {

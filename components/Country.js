@@ -9,11 +9,11 @@ function Country({ countries }) {
             <Link
               key={index}
               href="/country/[id]"
-              as={`/country/${country.alpha3Code}`}
+              as={`/country/${country.cca3}`}
             >
               <div className="flags-columns" key={index}>
-                <img src={country.flag} alt="flag" />
-                <h4 className="country-name">{country.name}</h4>
+                <img src={country.flags.svg} alt="flag" />
+                <h4 className="country-name">{country.name.common}</h4>
                 <span className="key">
                   <strong>Population:</strong>
                 </span>
